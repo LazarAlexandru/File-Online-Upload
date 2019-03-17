@@ -1,3 +1,8 @@
+
+@font-face {
+  font-family: Micro;
+  src: url(MicroFLF.ttf);
+}
 body{
 	background-image:url("background.jpg");
 }	
@@ -10,6 +15,7 @@ div{
   background-color:  #004466;
   border-radius: 7px;
   margin:100;
+   font-family:Micro;
 }
 
 ul {
@@ -18,7 +24,9 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #333;
-  border-radius: 7px;
+  border-radius: 2px;
+   font-family:Micro;
+   opacity:1;
 }
 
 li {
@@ -31,12 +39,24 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  opacity:1;
+  font-size: 25;
+}
+
+.home
+{
+background-color:#6495ED;
+}
+.login{
+  background-color:#008000;
 }
 
 .scale_transition{
-  transition:transform .2s;
+  text-align: center;
+  transition:transform .4s;
 }
 
 .scale_transition:hover{
-  transform:scale(1.5);
+  transform: scale(1.2);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
