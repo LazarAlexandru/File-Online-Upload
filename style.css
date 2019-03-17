@@ -5,8 +5,11 @@ body{
 div{
 	position: fixed;
 	top: 35%;
-	left: 40%;
+	left: 33%;
 	font-size: 200%; 
+  background-color:  #004466;
+  border-radius: 7px;
+  margin:100;
 }
 
 ul {
@@ -15,6 +18,7 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  border-radius: 7px;
 }
 
 li {
@@ -27,4 +31,12 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+.scale_transition{
+  transition:transform .2s;
+}
+
+.scale_transition:hover{
+  transform:scale(1.5);
 }
