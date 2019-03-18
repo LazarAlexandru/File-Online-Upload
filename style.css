@@ -16,6 +16,7 @@ div{
   border-radius: 5px;
   margin:100;
    font-family:Micro;
+   padding: 4px;
 }
 
 ul {
@@ -51,7 +52,13 @@ background-color:#6495ED;
 .login{
   background-color:#008000;
 }
-
+.register{
+  background-color:#8A2BE2;
+}
+.logout
+{
+  background-color:#D2691E;
+}
 .scale_transition{
   text-align: center;
   transition:transform .4s;
