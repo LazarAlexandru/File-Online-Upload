@@ -13,7 +13,6 @@
 
 <div align="left" class="myfiles"><p>Uploaded Files</p>
 <ul id="fileslist" class="myfiles">
-<li>exe</li>
 </ul>
 </div>
 
@@ -32,6 +31,7 @@ Enter the file name:<input type="text" name="filename" value="Filename">
 		var ul=document.getElementById("fileslist");
 		var li=document.createElement("li");
 		li.appendChild(document.createTextNode(filename));
+		li.setAttribute("class","myfiles scale_transition");
 		ul.appendChild(li);
 	}
 </script>
