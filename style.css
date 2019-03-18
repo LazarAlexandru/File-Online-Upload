@@ -23,17 +23,18 @@ div.upload
 {
   background-color:#333;
   height: 70px;
+  font-color:white;
 }
 
 div.myfiles{
   background-color:#333;
   height: 400px;
+  opacity:0.6;
 }
 
 ul.myfiles{
   overflow: auto;
   height:350px;
-  list-style-type: none;
   padding: 2px;
   background-color: #333;
   border-radius: 2px;
@@ -43,11 +44,13 @@ ul.myfiles{
 
 li.myfiles
 {
-  background-color: #5F9EA0;
+  list-style-type: none;
+  background-color: white;
   float:left;
   clear:left;
-  margin:2px 0 0 0;
+  margin:4px 0 0 10px;
   padding:5px;
+  opacity:1;
 }
 
 ul.navbar {
@@ -98,4 +101,16 @@ background-color:#6495ED;
 .scale_transition:hover{
   transform: scale(1.2);
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+div.detalii
+{
+ visibility: hidden;
+ align-self: center;
+  background-color:black;
+
+}
+li.myfiles:hover + div.detalii
+{
+  visibility: visible;
 }
