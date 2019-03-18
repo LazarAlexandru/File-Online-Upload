@@ -7,19 +7,35 @@ body{
 	background-image:url("background.jpg");
 }	
 
-div{
+.form{
 	position: fixed;
 	top: 35%;
 	left: 33%;
 	font-size: 200%; 
-  background-color:  #004466;
-  border-radius: 5px;
+  background-color:#004466;
+  border-radius: 1px;
   margin:100;
    font-family:Micro;
    padding: 4px;
 }
 
-ul {
+div.upload
+{
+  background-color:#333;
+  height: 70px;
+}
+div.myfiles{
+  background-color:#333;
+  height: 400px;
+}
+
+ul.myfiles{
+  overflow: auto;
+  height:350px;
+  list-style-type: none;
+}
+
+ul.navbar {
   list-style-type: none;
   margin: 0;
   padding: 2px;
@@ -30,12 +46,12 @@ ul {
    opacity:1;
 }
 
-li {
+li.navbar {
   float: left;
   margin:0 2px 0 0;
 }
 
-li a {
+li a.navbar {
   display: block;
   color: white;
   text-align: center;

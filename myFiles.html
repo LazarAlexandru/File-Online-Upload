@@ -6,10 +6,35 @@
 </head>
 <body>
 
-<ul>
-	<li><a href="index.html" class="scale_transition home">Home</a></li>
-	<li><a href="index.html" class="scale_transition logout">Logout</a></li>
+<ul class="navbar">
+	<li class="navbar"><a href="index.html" class="scale_transition home navbar">Home</a></li>
+	<li class="navbar"><a href="index.html" class="scale_transition logout navbar">Logout</a></li>
 </ul>
+
+<div align="left" class="myfiles"><p>Uploaded Files</p>
+<ul id="fileslist" class="myfiles">
+<li>exe</li>
+</ul>
+</div>
+
+<div class="upload">
+<p>Introdu numele fisierului pe care doresti sa-l adaugi:</p>
+<form id="uploadform">
+Enter the file name:<input type="text" name="filename" value="Filename">
+<input type="button" onclick="uploadFile()" value="Upload" class="scale_transition ">
+</form>
+</div>
+
+<script>
+	function uploadFile()
+	{
+		var filename=document.getElementById("uploadform").elements[0].value;
+		var ul=document.getElementById("fileslist");
+		var li=document.createElement("li");
+		li.appendChild(document.createTextNode(filename));
+		ul.appendChild(li);
+	}
+</script>
 
 </body>
 </html>
