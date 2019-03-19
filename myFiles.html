@@ -13,12 +13,6 @@
 
 <div align="left" class="myfiles"><p>Uploaded Files</p>
 <ul id="fileslist" class="myfiles">
-	<li class="hoverWrapper scale_transition myfiles">aaaaaa
-		<div id="hoverShow">1>
-			aaa
-		</div>
-	</li>
-
 </ul>
 </div>
 
@@ -38,7 +32,10 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 			var Name="";
 			var Size="";
 			var ul=document.getElementById("fileslist");
-			var li=document.createElement("li");	
+			var li=document.createElement("li");
+			var div=document.createElement("div");
+			var p=document.createElement("p");	
+			var button=document.createElement("button");
 		
 		for (var index=0;index<file.files.length;index++){
 			var fileAttributes=file.files[index];
@@ -46,11 +43,19 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 				Name +="Name:" + fileAttributes.name;
 			}
 			if('size' in fileAttributes){
-				Size +="Name:" + fileAttributes.size + "bytes";
+				Size +="Size:" + fileAttributes.size + " bytes";
 			}
 		}
+		var node=document.createTextNode(">"+Size);
 		li.appendChild(document.createTextNode(Name));
 		li.setAttribute("class","myfiles scale_transition");
+		div.setAttribute("class","detalii myfiles");
+		button.setAttribute("value","Download");
+		button.setAttribute("class","myfiles");
+		p.appendChild(node);
+		div.appendChild(p);
+		div.appendChild(button);
+		li.appendChild(div);
 		ul.appendChild(li);
 	}
 	}

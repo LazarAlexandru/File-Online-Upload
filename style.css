@@ -40,7 +40,7 @@ div.upload
 div.myfiles{
   background-color:#333;
   height: 400px;
-  opacity:0.6;
+  opacity:0.7;
 }
 
 ul.myfiles{
@@ -116,26 +116,40 @@ background-color:#6495ED;
 
 div.detalii
 {
- visibility: hidden;
- align-self: center;
-  background-color:black;
-
+ background-color: white !important;
+ display: none;
+ margin-left: 10px;
+ clear:left;
+ float:left;
+ max-width:150px;
+ max-height:150px;
+ font-color:black;
 }
-li.myfiles:hover + div.detalii
+
+li.myfiles:hover .detalii
 {
-  visibility: visible;
+  display:block;
 }
 
+li.myfiles:hover
+{
+ width:200px;
+ text-align: center;
+}
+
+button.myfiles
+{
+  font-size: 16px;
+}
 li.hoverWrapper:hover #hoverShow {
  display: block;
 }
 
 .hoverWrapper #hoverShow {
  display: none;
- background-color: #00111a;
+ background-color:white;
  width: 250px;
- height: 250px;
+ height: 150px;
  left: 200px;
  top: 100px;
- color:white;
 }
