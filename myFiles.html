@@ -13,14 +13,19 @@
 
 <div align="left" class="myfiles"><p>Uploaded Files</p>
 <ul id="fileslist" class="myfiles">
-	
+	<li class="hoverWrapper scale_transition myfiles">aaaaaa
+		<div id="hoverShow">1>
+			aaa
+		</div>
+	</li>
+
 </ul>
 </div>
 
 <div class="upload">
 <p>Introdu numele fisierului pe care doresti sa-l adaugi:</p>
 <form id="uploadform">
-Choose the file you wish to upload:<input type="file" name="filename" value="Filename">
+Choose the file you wish to upload:<input type="file" id="myFile">
 <input type="button" onclick="uploadFile()" value="Upload" class="scale_transition ">
 </form>
 </div>
@@ -28,12 +33,26 @@ Choose the file you wish to upload:<input type="file" name="filename" value="Fil
 <script>
 	function uploadFile()
 	{
-		var filename=document.getElementById("uploadform").elements[0].value;
-		var ul=document.getElementById("fileslist");
-		var li=document.createElement("li");
-		li.appendChild(document.createTextNode(filename));
+		var file=document.getElementById("myFile");
+		if(typeof(file)!= 'undefined' || file!=null){
+			var Name="";
+			var Size="";
+			var ul=document.getElementById("fileslist");
+			var li=document.createElement("li");	
+		
+		for (var index=0;index<file.files.length;index++){
+			var fileAttributes=file.files[index];
+			if('name' in fileAttributes){
+				Name +="Name:" + fileAttributes.name;
+			}
+			if('size' in fileAttributes){
+				Size +="Name:" + fileAttributes.size + "bytes";
+			}
+		}
+		li.appendChild(document.createTextNode(Name));
 		li.setAttribute("class","myfiles scale_transition");
 		ul.appendChild(li);
+	}
 	}
 </script>
 

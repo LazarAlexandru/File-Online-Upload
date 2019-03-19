@@ -10,13 +10,24 @@ body{
 .form{
 	position: fixed;
 	top: 35%;
-	left: 33%;
+	left: 40%;
 	font-size: 200%; 
   background-color:#004466;
-  border-radius: 1px;
+  border-radius: 5px;
   margin:100;
-   font-family:Micro;
-   padding: 4px;
+  font-family:Micro;
+  padding: 4px;
+}
+
+.indexform{
+  position: fixed;
+  top: 35%;
+  left: 35%;
+  font-size: 200%;
+  background-color: #004466;
+  font-family: Micro;
+  padding: 4px;
+  border-radius: 5px;
 }
 
 div.upload
@@ -113,4 +124,18 @@ div.detalii
 li.myfiles:hover + div.detalii
 {
   visibility: visible;
+}
+
+li.hoverWrapper:hover #hoverShow {
+ display: block;
+}
+
+.hoverWrapper #hoverShow {
+ display: none;
+ background-color: #00111a;
+ width: 250px;
+ height: 250px;
+ left: 200px;
+ top: 100px;
+ color:white;
 }
