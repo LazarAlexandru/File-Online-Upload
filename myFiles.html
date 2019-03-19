@@ -31,29 +31,37 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 		if(typeof(file)!= 'undefined' || file!=null){
 			var Name="";
 			var Size="";
+			var Type="";
 			var ul=document.getElementById("fileslist");
 			var li=document.createElement("li");
 			var div=document.createElement("div");
-			var p=document.createElement("p");	
+			var pSize=document.createElement("p");	
+            var pType=document.createElement("p");
 			var button=document.createElement("button");
 		
 		for (var index=0;index<file.files.length;index++){
 			var fileAttributes=file.files[index];
 			if('name' in fileAttributes){
-				Name +="Name:" + fileAttributes.name;
+				Name +=fileAttributes.name;
 			}
 			if('size' in fileAttributes){
 				Size +="Size:" + fileAttributes.size + " bytes";
 			}
+			if('type' in fileAttributes){
+				 Type+="Type:" + fileAttributes.type;
+			}
 		}
-		var node=document.createTextNode(">"+Size);
+		var nodeSize=document.createTextNode("> "+Size);
+		var nodeType=document.createTextNode("> "+Type);
 		li.appendChild(document.createTextNode(Name));
 		li.setAttribute("class","myfiles scale_transition");
 		div.setAttribute("class","detalii myfiles");
 		button.setAttribute("value","Download");
 		button.setAttribute("class","myfiles");
-		p.appendChild(node);
-		div.appendChild(p);
+		pSize.appendChild(nodeSize);
+		pType.appendChild(nodeType);
+		div.appendChild(pSize);
+		div.appendChild(pType);
 		div.appendChild(button);
 		li.appendChild(div);
 		ul.appendChild(li);

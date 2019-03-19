@@ -121,7 +121,7 @@ div.detalii
  margin-left: 10px;
  clear:left;
  float:left;
- max-width:150px;
+ max-width:200px;
  max-height:150px;
  font-color:black;
 }
@@ -141,6 +141,7 @@ button.myfiles
 {
   font-size: 16px;
 }
+
 li.hoverWrapper:hover #hoverShow {
  display: block;
 }
