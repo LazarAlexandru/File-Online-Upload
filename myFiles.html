@@ -15,7 +15,11 @@
 	<button class="options_button">Viewing Options</button>
 	<div class="options" id="Options">
 		<input type="checkbox" name="check" onchange="sortListBySize();unCheck(this)"/> Order documents by size
+		<input type="checkbox" name="check" onchange="unCheck(this)"/>Order Files By Date
 		<input type="checkbox" name="check" onchange="sortListAlphabetically();unCheck(this)"/> Order documents alphabetically
+		<br>
+		<input type="text" id="searchInput" class="search_field" onkeyup="Search()" placeholder="Search for files..">
+
 	</div>
 <ul id="fileslist" class="myfiles">
 </ul>
@@ -164,6 +168,23 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 		}
 		e.checked=true;
 	}
+	
+	function Search()
+{
+var searchInput,ul,li,filename,i,txtValue;
+
+searchInput=(document.getElementById("searchInput")).value.toUpperCase();
+ul=document.getElementById("fileslist");
+li=ul.getElementsByTagName("li");
+
+for(i=0;i<li.length;i++)
+
+if((li[i].innerText).toUpperCase().indexOf(searchInput) > -1)
+	li[i].style.display="";
+else
+	li[i].style.display="none";
+}
+
 </script>
 </body>
 </html>

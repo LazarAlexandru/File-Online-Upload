@@ -161,11 +161,23 @@ li.myfiles:hover
 }
 
 .options{
-  height: 40px;
+  height: 62px;
   width: 600px;
   background-color: white;
   border-radius: 5px;
   margin-left: 10px;
   font-family: Micro;
   font-size: 13px;
+}
+.search_field
+{
+  background-image: url("search.jpg");
+  padding:5px 25px 6px;
+  background-size: 28px 27px;
+  background-repeat: no-repeat;
+  font-size: 14px;
+  border:1px solid #4d4d4d;
+  margin-bottom:1px;
+  margin-top: 4px;
+  margin-left:4px;
 }
