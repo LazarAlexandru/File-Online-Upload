@@ -15,7 +15,7 @@
 	<button class="options_button">Viewing Options</button>
 	<div class="options" id="Options">
 		<input type="checkbox" name="check" onchange="sortListBySize();unCheck(this)"/> Order documents by size
-		<input type="checkbox" name="check" onchange="unCheck(this)"/>Order Files By Date
+		<input type="checkbox" name="check" onchange="unCheck(this);sortListByDate()"/>Order Files By Date
 		<input type="checkbox" name="check" onchange="sortListAlphabetically();unCheck(this)"/> Order documents alphabetically
 		<br>
 		<input type="text" id="searchInput" class="search_field" onkeyup="Search()" placeholder="Search for files..">
@@ -48,6 +48,7 @@ Choose the file you wish to upload:<input type="file" id="myFile">
             var pType=document.createElement("p");
 			var downloadButton=document.createElement("button");
 			var	deleteButton=document.createElement("button");
+			var pUploadDate=document.createElement("p");
 		
 		for (var index=0;index<file.files.length;index++){
 			var fileAttributes=file.files[index];
@@ -71,10 +72,13 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 		downloadButton.appendChild(document.createTextNode("Download"));
 		pSize.appendChild(document.createTextNode("> "+Size));
 		pType.appendChild(document.createTextNode("> "+Type));
+		pUploadDate.appendChild(document.createTextNode("> Uploaded at:"+new Date().toString().split(' ').splice(1,4).join(',')));
 		pSize.setAttribute("class","detalii");
 		pType.setAttribute("class","detalii");
+		pUploadDate.setAttribute("class","detalii");
 		div.appendChild(pSize);
 		div.appendChild(pType);
+		div.appendChild(pUploadDate);
 		div.appendChild(downloadButton);
 		li.appendChild(div);
 		ul.appendChild(li);
@@ -92,6 +96,48 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 			for(index=0;index<(li.length-1);index++){
 				size1=(((li[index]).childNodes[2]).childNodes[0]).innerHTML;
 				size2=(((li[index+1]).childNodes[2]).childNodes[0]).innerHTML;
+				shouldSwitch=false;
+
+				if(dir=="asc"){
+					if(size1>size2){
+						shouldSwitch=true;
+						break;
+					}
+				}
+				else{
+					if(dir=="desc"){
+						if(size1<size2){
+							shouldSwitch=true;
+							break;
+						}
+					}
+				}
+			}
+			if (shouldSwitch){
+				li[index].parentNode.insertBefore(li[index+1],li[index]);
+				switching=true;
+				switchCount++;
+			}
+			else{
+				if(switchCount==0 && dir=="asc"){
+					dir="desc";
+					switching=true;
+				}
+			}
+		}
+	}
+
+	function sortListByDate(){
+		var list,index,switching,li,shouldSwitch,dir,switchCount=0;
+		list=document.getElementById("fileslist");
+		switching=true;
+		dir="asc";
+		while(switching){
+			switching=false;
+			li=list.getElementsByTagName("li");
+			for(index=0;index<(li.length-1);index++){
+				size1=(((li[index]).childNodes[2]).childNodes[2]).innerHTML;
+				size2=(((li[index+1]).childNodes[2]).childNodes[2]).innerHTML;
 				shouldSwitch=false;
 
 				if(dir=="asc"){
