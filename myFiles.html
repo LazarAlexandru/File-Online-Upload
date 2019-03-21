@@ -46,7 +46,8 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 			var div=document.createElement("div");
 			var pSize=document.createElement("p");	
             var pType=document.createElement("p");
-			var button=document.createElement("button");
+			var downloadButton=document.createElement("button");
+			var	deleteButton=document.createElement("button");
 		
 		for (var index=0;index<file.files.length;index++){
 			var fileAttributes=file.files[index];
@@ -61,17 +62,20 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 			}
 		}
 		li.appendChild(document.createTextNode(Name));
+		deleteButton.setAttribute("class","delete_button");
+		deleteButton.setAttribute("onclick","deleteElement(this)");
+		li.appendChild(deleteButton);
 		li.setAttribute("class","myfiles scale_transition");
 		div.setAttribute("class","detalii myfiles");
-		button.setAttribute("class","download_button");
-		button.appendChild(document.createTextNode("Download"));
+		downloadButton.setAttribute("class","download_button");
+		downloadButton.appendChild(document.createTextNode("Download"));
 		pSize.appendChild(document.createTextNode("> "+Size));
 		pType.appendChild(document.createTextNode("> "+Type));
 		pSize.setAttribute("class","detalii");
 		pType.setAttribute("class","detalii");
 		div.appendChild(pSize);
 		div.appendChild(pType);
-		div.appendChild(button);
+		div.appendChild(downloadButton);
 		li.appendChild(div);
 		ul.appendChild(li);
 	}
@@ -86,8 +90,8 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 			switching=false;
 			li=list.getElementsByTagName("li");
 			for(index=0;index<(li.length-1);index++){
-				size1=(((li[index]).childNodes[1]).childNodes[0]).innerHTML;
-				size2=(((li[index+1]).childNodes[1]).childNodes[0]).innerHTML;
+				size1=(((li[index]).childNodes[2]).childNodes[0]).innerHTML;
+				size2=(((li[index+1]).childNodes[2]).childNodes[0]).innerHTML;
 				shouldSwitch=false;
 
 				if(dir=="asc"){
@@ -168,7 +172,7 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 		}
 		e.checked=true;
 	}
-	
+
 	function Search()
 {
 var searchInput,ul,li,filename,i,txtValue;
@@ -183,6 +187,12 @@ if((li[i].innerText).toUpperCase().indexOf(searchInput) > -1)
 	li[i].style.display="";
 else
 	li[i].style.display="none";
+}
+
+function deleteElement(e)
+{
+	var li=e.parentNode;
+	li.remove();
 }
 
 </script>
