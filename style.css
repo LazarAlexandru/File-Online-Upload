@@ -13,27 +13,38 @@ body{
 	background-image:url("background.jpg");
 }	
 
-.form{
-  margin-top:4px;
-  float:left;
-  width: 20%
-  height:40%; 
-  background-color:white;
+.registerform{
+  position: fixed;
+  font-size: 130%;
+  left: 40%;
+  top: 30%;
+  width: 20%;
+  height:30%; 
+  background-color: #004466;
   border-radius: 5px;
-  border-style: solid;
-  border-width: 1px;
-  padding: 4px;
+  font-family: FireSans;
+}
+
+.loginform{
+  position: fixed;
+  top:35%;
+  left: 37%;
+  font-size: 200%;
+  width: 25%;
+  background-color: #004466;
+  border-radius: 5px;
   font-family: FireSans;
 }
 
 .input
 {
-font-size:90%;
+font-size:80%;
 }
 
 .submit
 {
-  margin-top:35%;
+  margin-top:10%;
+  margin-bottom: 3%;
 }
 
 .indexform{
@@ -51,8 +62,7 @@ div.upload
 {
   margin-top: 3.15%;
   background-color:#333;
-  height: 70px;
-  font-color:white;
+  font-color:#ffffff;
 }
 
 div.myfiles{
@@ -74,7 +84,7 @@ ul.myfiles{
 li.myfiles
 {
   list-style-type: none;
-  background-color: white;
+  background-color: #ffffff;
   float:left;
   clear:left;
   margin:0.2% 0 0.2% 0.5%;
@@ -100,7 +110,7 @@ li.navbar {
 
 li a.navbar {
   display: block;
-  color: white;
+  color: #ffffff;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -134,13 +144,13 @@ background-color:#6495ED;
 
 div.detalii
 {
- background-color: white !important;
+ background-color: #ffffff !important;
  display: none;
  margin-left: 10px;
  clear:left;
  float:left;
  max-width:100%;
- font-color:black;
+ font-color:#000000;
 }
 
 p.detalii{
@@ -170,7 +180,7 @@ li.myfiles:hover
   font-size: 100%;
   width: 43%;
   height: 25px;
-  font-color:black;
+  font-color:#000000;
   float:left;
 }
 
@@ -183,7 +193,7 @@ li.myfiles:hover
   float:right;
   display: none;
   background-image: url("delete.jpg");
-  background-color: white;
+  background-color: #ffffff;
   padding:5px 7px 6px;
   background-size: 14px 14px;
   background-repeat: no-repeat;
@@ -206,7 +216,7 @@ li.myfiles:hover
 .options{
   height: 15.5%;
   width: 31.5%;
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 5px;
   margin-left: 10px;
   font-family: Micro;
