@@ -63,7 +63,7 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 				Name +=fileAttributes.name;
 			}
 			if('size' in fileAttributes){
-				Size +="Size:" + fileAttributes.size + " bytes";
+				Size +="Size:" + Math.round(parseInt(fileAttributes.size)/1024) + " KB";
 			}
 			if('type' in fileAttributes){
 				 Type+="Type:" + fileAttributes.type;
