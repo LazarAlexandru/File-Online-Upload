@@ -19,6 +19,13 @@
 		<input type="checkbox" name="check" onchange="sortListAlphabetically();unCheck(this)"/> Order documents alphabetically
 		<br>
 		<input type="text" id="searchInput" class="search_field" onkeyup="Search()" placeholder="Search for files..">
+		Search by tag:
+		<select id="tagFilter" onchange="selectByTag()">
+			<option value="notag">no tag</option>
+			<option value="document">document</option>
+            <option value="application">application</option>
+            <option value="compressed">compressed</option>
+		</select>
 
 	</div>
 <ul id="fileslist" class="myfiles">
@@ -239,6 +246,40 @@ function deleteElement(e)
 {
 	var li=e.parentNode;
 	li.remove();
+}
+
+function selectByTag()
+{
+var option=document.getElementById("tagFilter").value;
+var ul=document.getElementById("fileslist");
+var li=ul.getElementsByTagName("li");
+
+for(var i=0;i<li.length;i++)
+{
+
+if(option=="notag")
+	li[i].style.display="";
+
+else if(option=="document")
+{
+	if(((li[i].innerText).toUpperCase()).search(".PDF")>-1 || ((li[i].innerText).toUpperCase()).search(".TXT")>-1) li[i].style.display="";
+else li[i].style.display="none";
+}
+
+else if(option=="application")
+{
+	if(((li[i].innerText).toUpperCase()).search(".EXE")>-1 || ((li[i].innerText).toUpperCase()).search(".DAT")>-1) li[i].style.display="";
+else li[i].style.display="none";
+}
+
+else if(option=="compressed")
+{
+	if(((li[i].innerText).toUpperCase()).search(".RAR")>-1 || ((li[i].innerText).toUpperCase()).search(".ZIP")>-1) li[i].style.display="";
+else li[i].style.display="none";
+}
+
+}
+
 }
 
 </script>
