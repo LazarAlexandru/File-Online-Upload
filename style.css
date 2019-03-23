@@ -14,11 +14,11 @@ body{
 }	
 
 .registerform{
-  float:left;
+  position:fixed;
   font-size: 100%;
   left: 40%;
   top: 30%;
-  min-width: 10%;
+  min-width: 20%;
   min-height:20%; 
   background-color: #ffffff;
   border-radius: 5px;
@@ -30,7 +30,9 @@ body{
 }
 
 .loginform{
-  float:left;
+  position:fixed;
+  left:37%;
+  top:30%;
   font-size:100%;
   min-width: 25%;
   min-height: 30%;
@@ -57,12 +59,14 @@ font-size:80%;
 .indexform{
   position: fixed;
   top: 35%;
-  left: 35%;
+  left: 28%;
   font-size: 200%;
   background-color: #ffffff;
   font-family: Micro;
   padding: 4px;
   border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
 }
 
 div.upload
