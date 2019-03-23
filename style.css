@@ -15,7 +15,7 @@ body{
 
 .registerform{
   position: fixed;
-  font-size: 130%;
+  font-size: 100%;
   left: 40%;
   top: 30%;
   width: 20%;
@@ -60,9 +60,15 @@ font-size:80%;
 
 div.upload
 {
-  margin-top: 3.15%;
-  background-color:#333;
+  margin-top: 1px;
+  background-color:#ffffff;
   font-color:#ffffff;
+  border-radius: 2px;
+  border-width: 1px;
+  border-style: solid;
+  font-family: Micro;
+  font-size: 90%;
+  padding:5px;
 }
 
 div.myfiles{
@@ -73,7 +79,7 @@ div.myfiles{
 
 ul.myfiles{
   overflow: auto;
-  height:80%;
+  height:300px;
   padding: 2px;
   background-color: #333;
   border-radius: 2px;
@@ -144,12 +150,14 @@ background-color:#6495ED;
 
 div.detalii
 {
+ border-top:solid 1px;
  background-color: #ffffff !important;
  display: none;
  margin-left: 10px;
  clear:left;
  float:left;
- max-width:100%;
+ height: 100%;
+ width: 90%;
  font-color:#000000;
 }
 
@@ -172,16 +180,26 @@ display:inline-block;
 
 li.myfiles:hover
 {
- width:12%;
+ width:20%;
  text-align: center;
+ margin-left: 30px;
+ margin-top: 8px;
 }
 
+
 .download_button{
-  font-size: 100%;
-  width: 43%;
-  height: 25px;
-  font-color:#000000;
-  float:left;
+  background-image: url("download.jpg");
+  background-color: #ffffff;
+  background-size: 19px 19px;
+  background-repeat: no-repeat;
+  padding:6px 10px 6px;
+  border:none;
+  margin-top:1px;
+  margin-right:2px;
+  float:right;
+  height:20px;
+  width:9%;
+  transition:transform .3s;
 }
 
 .delete_button
@@ -205,6 +223,10 @@ li.myfiles:hover
   transform: scale(1.6);
 }
 
+.download_button:hover
+{
+  transform: scale(1.4);
+}
 .options_button{
   margin-left: 10px;
 }
@@ -214,6 +236,8 @@ li.myfiles:hover
 }
 
 .options{
+  border-style: solid;
+  border-width: 1px;
   height: 15.5%;
   width: 31.5%;
   background-color: #ffffff;
@@ -221,6 +245,27 @@ li.myfiles:hover
   margin-left: 10px;
   font-family: Micro;
   font-size: 80%;
+  padding:6px;
+  -moz-user-select:none;
+}
+
+.myfiles_title
+{
+  font-family: Micro;
+  background-color:#6495ED; 
+  color:#ffffff;
+  -moz-user-select:none;
+  font-weight:bold;
+
+}
+
+.options_title
+{
+  text-shadow: 10%;
+  text-decoration: underline;
+  line-height:1px;
+  text-shadow: 1px 1px #C0C0C0;
+  -moz-user-select:none;
 }
 .search_field
 {
@@ -228,11 +273,30 @@ li.myfiles:hover
   padding:5px 25px 6px;
   background-size: 27px 28px;
   background-repeat: no-repeat;
-  font-size: 109%;
+  font-size: 100%;
   border:1px solid #4d4d4d;
   margin-bottom:1%;
   margin-top: 4px;
   margin-left:4px;
-  width: 30.4%;
+  width: 29%;
   height: 29%;
+}
+
+.upload_button{
+  background-image: url("upload.jpg");
+  display:inline-block;
+  background-color: #ffffff;
+  background-size: 36px 34px;
+  border:none;
+  background-repeat: no-repeat;
+  height:30px;
+  width:2.5%;
+  padding:0px;
+  transition:transform .3s;
+  position: relative;
+}
+
+.upload_button:hover
+{
+  transform: scale(1.2);
 }

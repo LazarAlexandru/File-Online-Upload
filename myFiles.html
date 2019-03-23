@@ -11,15 +11,16 @@
 	<li class="navbar"><a href="index.html" class="scale_transition logout navbar">Logout</a></li>
 </ul>
 
-<div align="left" class="myfiles"><p>Uploaded Files</p>
-	<button class="options_button">Viewing Options</button>
+<div align="left" class="myfiles"><p class="myfiles_title scale_transition">&nbsp Uploaded Files</p>
 	<div class="options" id="Options">
-		<input type="checkbox" name="check" onchange="sortListBySize();unCheck(this)"/> Order documents by size
-		<input type="checkbox" name="check" onchange="unCheck(this);sortListByDate()"/>Order Files By Date
-		<input type="checkbox" name="check" onchange="sortListAlphabetically();unCheck(this)"/> Order documents alphabetically
+		<p align="center" class="options_title">Options</p>
+		<input type="checkbox" name="check" onchange="sortListBySize();unCheck(this)"/> Order files by size</input>
+		<input type="checkbox" name="check" onchange="unCheck(this);sortListByDate()"/>Order files by date</input>
+		<br>
+		<input type="checkbox" name="check" onchange="sortListAlphabetically();unCheck(this)"/> Order files alphabetically</input>
 		<br>
 		<input type="text" id="searchInput" class="search_field" onkeyup="Search()" placeholder="Search for files..">
-		Search by tag:
+		tag:
 		<select id="tagFilter" onchange="selectByTag()">
 			<option value="notag">no tag</option>
 			<option value="document">document</option>
@@ -33,10 +34,10 @@
 </div>
 
 <div class="upload">
-<p>Introdu numele fisierului pe care doresti sa-l adaugi:</p>
 <form id="uploadform">
-Choose the file you wish to upload:<input type="file" id="myFile">
-<input type="button" onclick="uploadFile()" value="Upload" class="scale_transition ">
+	&nbsp Upload File:
+    <input type="file" id="myFile" required>
+    <input type="button" onclick="uploadFile()" value="Download">
 </form>
 </div>
 
@@ -44,7 +45,7 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 	function uploadFile()
 	{
 		var file=document.getElementById("myFile");
-		if(typeof(file)!= 'undefined' || file!=null){
+		if(file.value){
 			var Name="";
 			var Size="";
 			var Type="";
@@ -76,10 +77,9 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 		li.setAttribute("class","myfiles scale_transition");
 		div.setAttribute("class","detalii myfiles");
 		downloadButton.setAttribute("class","download_button");
-		downloadButton.appendChild(document.createTextNode("Download"));
-		pSize.appendChild(document.createTextNode("> "+Size));
-		pType.appendChild(document.createTextNode("> "+Type));
-		pUploadDate.appendChild(document.createTextNode("> Uploaded at:"+new Date().toString().split(' ').splice(1,4).join(',')));
+		pSize.appendChild(document.createTextNode(">"+Size));
+		pType.appendChild(document.createTextNode(">"+Type));
+		pUploadDate.appendChild(document.createTextNode(">Uploaded:"+new Date().toString().split(' ').splice(1,3).join('/')));
 		pSize.setAttribute("class","detalii");
 		pType.setAttribute("class","detalii");
 		pUploadDate.setAttribute("class","detalii");
@@ -90,6 +90,7 @@ Choose the file you wish to upload:<input type="file" id="myFile">
 		li.appendChild(div);
 		ul.appendChild(li);
 	}
+	return 0;
 	}
 
 	function sortListBySize(){
@@ -281,7 +282,35 @@ else li[i].style.display="none";
 }
 
 }
+window.addEventListener('resize', function(event){
+	var ul=document.getElementById("fileslist");
+	var li=ul.getElementsByTagName("li");
+	var options=document.getElementById("Options");
+	if(window.innerWidth<=700)
+	{
+		options.style.fontSize="75%";
+     for(var i=0;i<li.length;i++)
+     {
+     	li[i].style.width="30%";
+     	(li[i].childNodes[2]).style.fontSize="65%";
+     	((li[i].childNodes[2]).childNodes[3]).style.float="left";
+     	((li[i].childNodes[2]).childNodes[3]).style.clear="left";
 
+     }
+ }
+     else 
+     {
+     	options.style.fontSize="80%";
+     	for(var i=0;i<li.length;i++)
+     {
+     	li[i].style.width="";
+     	(li[i].childNodes[2]).style.fontSize="100%";
+     	((li[i].childNodes[2]).childNodes[3]).style.float="";
+     	((li[i].childNodes[2]).childNodes[3]).style.clear="";
+    }
+}
+     
+});
 </script>
 </body>
 </html>
