@@ -8,7 +8,7 @@
 </head>
 <body>
 	<ul class="navbar">
-		<li class="navbar"><a href="index.jsp" class="scale_transition home navbar">Home</a></li>
+		<li class="navbar"><a href="Logout" class="scale_transition home navbar">Home</a></li>
 		<li class="navbar"><a href="register.jsp" class="scale_transition register navbar">Register</a></li>
 	</ul>
 

@@ -5,6 +5,7 @@
  */
 package components;
 
+import java.io.Serializable;
 import java.nio.file.Path;
 import java.sql.Date;
 
@@ -12,7 +13,7 @@ import java.sql.Date;
  *
  * @author Alex
  */
-public class File {
+public class File implements Serializable{
 
     Integer size;
     String type;
@@ -21,22 +22,28 @@ public class File {
     String category;
     Path filePath;
     String description;
+    String driveId;
 
     public File(Integer size,
             String type,
-            String name
-            /*Date uploadDate,
+            String name,String driveId,
             String category,
-            Path filePath,
+            Date uploadDate
+            /*Path filePath,
             String description*/) 
     {
 this.size=size;
 this.type=type;
 this.name=name;
+this.driveId=driveId;
 this.uploadDate=uploadDate;
 this.category=category;
 this.filePath=filePath;
 this.description=description;
+    }
+
+    public String getDriveId() {
+        return driveId;
     }
 
     public Integer getSize() {

@@ -9,6 +9,18 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>jdbc.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Upload</servlet-name>
+        <servlet-class>uploadownload.Upload</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Delete</servlet-name>
+        <servlet-class>jdbc.Delete</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>jdbc.Logout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>reg</servlet-name>
         <url-pattern>/regServlet</url-pattern>
@@ -16,6 +28,18 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Upload</servlet-name>
+        <url-pattern>/Upload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Delete</servlet-name>
+        <url-pattern>/Delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

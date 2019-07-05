@@ -29,6 +29,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -107,13 +108,20 @@ public class Login extends HttpServlet {
              
             if(rs.next())
             {
+            //generate a new session
+            HttpSession newSession = request.getSession(true);
 
-                
+            //setting session to expiry in 5 mins
+            newSession.setMaxInactiveInterval(5*60);
+
                 User user=new User(rs.getString(1),name,password,rs.getString(4),rs.getString(5));
                 request.getSession().setAttribute("user", user);
                 user.printFiles();
+                user.loadCategoryList();
+                user.loadFiles();
                 ArrayList<File> uploadedFiles=user.getUploadedFiles();
-                
+                ArrayList<String> categoryList=user.getCategoryList();
+                request.getSession().setAttribute("categories", categoryList);
                 request.getSession().setAttribute("files", uploadedFiles);
                 response.sendRedirect("myFiles.jsp");
                 return;

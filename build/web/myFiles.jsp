@@ -4,7 +4,10 @@
 <html>
     
 <head>
+    
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<title>MyFiles</title>
 </head>
 <body>
@@ -12,10 +15,11 @@
 <ul class="navbar">
         <p id="welcome" class="welcome">Welcome ${user.getName()}</p>
 	<li class="navbar"><a href="index.jsp" class="scale_transition home navbar">Home</a></li>
-	<li class="navbar"><a href="index.jsp" class="scale_transition logout navbar">Logout</a></li>
+	<li class="navbar"><a href="Logout" class="scale_transition logout navbar">Logout</a></li>
 </ul>
 
 <div align="left" class="myfiles"><p class="myfiles_title">&nbsp Uploaded Files</p>
+    ${delete_message}
 	<div class="options" id="Options">
 		<p align="center" class="options_title">Options</p>
 		<input type="checkbox" name="check" onchange="sortListBySize();unCheck(this)"/> Order files by size</input>
@@ -30,25 +34,69 @@
 			<option value="document">document</option>
             <option value="application">application</option>
             <option value="compressed">compressed</option>
+            
+            
+           
+		</select>
+                &nbsp
+                 category:
+                <select id="categoryFilter" onchange="selectByCategory()">
+                    <option value="nocategory">no category</option>
+                    <c:forEach items="${categories}" var="category">
+                        <option>${category}</option>
+                    </c:forEach>
+			
 		</select>
 
 	</div>
+    <script>
+       function clearBox(e)
+{
+    e.innerHTML = "";
+}    
+    clearBox(this);</script>
 <ul id="fileslist" class="myfiles">
+    
      <c:forEach items="${files}" var="file">
-     <li class="myfiles scale_transition">${file.getName()}<button class="delete_button" onclick="deleteElement(this)"></button><div class="detalii myfiles"><p class="detalii">&gt;${file.getSize()}</p><p class="detalii">&gt;${file.getType()}</p><p class="detalii">&gt;16 aprilie</p><button class="download_button"></button></div></li>
+     <li class="myfiles scale_transition">${file.getName()}
+         
+             <form action="Delete" method="post"><input type="hidden" value="${file.getDriveId()}" name="name"/>
+             <button type="submit" class="delete_button"></button>
+         </form>
+             
+             <div class="detalii myfiles">
+             <p class="detalii">&gt;${file.getSize()}</p>
+             <p class="detalii">&gt;${file.getType()}</p>
+             <p class="detalii">&gt;${file.getUploadDate()}</p>
+             
+             <form action="Download" method="get"><input type="hidden" value="${file.getDriveId()}" name="name"/>
+                 <button type="submit" class="download_button"></button></form>
+                 
+             </div>
+     <div hidden>${file.getCategory()}</div>
+     </li>
     </c:forEach>
 </ul>
 </div>
 
 <div class="upload">
-    <form id="uploadform" method="POST" ecntype="multipart/form-data">
+    <form id="uploadform" enctype="multipart/form-data" method="post" action="Upload">
 	&nbsp Upload File:
-    <input type="file" id="myFile">
-    <input type="submit" action="#" onclick="uploadFile()" value="Upload">
+    <input type="file" id="myFile" name="uploadedfile">
+    &nbsp
+    Add a category for this file:<input type="text" name="category" >
+    <input type="submit" value="Upload">
+    
 </form>
+    ${upload_message}
 </div>
 
+
 <script>
+    function clearBox()
+{
+    document.getElementById("fileslist").innerHTML = "";
+}
     
 	function uploadFile(size,type,name)
 	{
@@ -116,8 +164,8 @@
 			switching=false;
 			li=list.getElementsByTagName("li");
 			for(index=0;index<(li.length-1);index++){
-				size1=(((li[index]).childNodes[2]).childNodes[0]).innerHTML;
-				size2=(((li[index+1]).childNodes[2]).childNodes[0]).innerHTML;
+				size1=(((li[index]).childNodes[3]).childNodes[0]).innerHTML;
+				size2=(((li[index+1]).childNodes[3]).childNodes[0]).innerHTML;
 				shouldSwitch=false;
 
 				if(dir=="asc"){
@@ -158,8 +206,8 @@
 			switching=false;
 			li=list.getElementsByTagName("li");
 			for(index=0;index<(li.length-1);index++){
-				size1=(((li[index]).childNodes[2]).childNodes[2]).innerHTML;
-				size2=(((li[index+1]).childNodes[2]).childNodes[2]).innerHTML;
+				size1=(((li[index]).childNodes[3]).childNodes[2]).innerHTML;
+				size2=(((li[index+1]).childNodes[3]).childNodes[2]).innerHTML;
 				shouldSwitch=false;
 
 				if(dir=="asc"){
@@ -257,10 +305,20 @@ else
 	li[i].style.display="none";
 }
 
-function deleteElement(e)
+function selectByCategory()
 {
-	var li=e.parentNode;
-	li.remove();
+var option=document.getElementById("categoryFilter").value;
+var ul=document.getElementById("fileslist");
+var li=ul.getElementsByTagName("li");
+for(var i=0;i<li.length;i++)
+{
+    if(option=="nocategory")
+        li[i].style.display="";
+    else{if((li[i].childNodes[5]).innerHTML==option)li[i].style.display="";
+    else li[i].style.display="none";}
+    
+}
+
 }
 
 function selectByTag()
@@ -306,9 +364,9 @@ window.addEventListener('resize', function(event){
      for(var i=0;i<li.length;i++)
      {
      	li[i].style.width="30%";
-     	(li[i].childNodes[2]).style.fontSize="65%";
-     	((li[i].childNodes[2]).childNodes[3]).style.float="left";
-     	((li[i].childNodes[2]).childNodes[3]).style.clear="left";
+     	(li[i].childNodes[3]).style.fontSize="65%";
+     	((li[i].childNodes[3]).childNodes[3]).style.float="left";
+     	((li[i].childNodes[3]).childNodes[3]).style.clear="left";
 
      }
  }
@@ -318,13 +376,56 @@ window.addEventListener('resize', function(event){
      	for(var i=0;i<li.length;i++)
      {
      	li[i].style.width="";
-     	(li[i].childNodes[2]).style.fontSize="100%";
-     	((li[i].childNodes[2]).childNodes[3]).style.float="";
-     	((li[i].childNodes[2]).childNodes[3]).style.clear="";
+     	(li[i].childNodes[3]).style.fontSize="100%";
+     	((li[i].childNodes[3]).childNodes[3]).style.float="";
+     	((li[i].childNodes[3]).childNodes[3]).style.clear="";
     }
 }
      
 });
+
+function deleteElement(e)
+{
+	var li=e.parentNode;
+        var name=li.childNodes[3].innerText;
+        
+        $.ajax({
+        type: 'GET',
+        url: 'Delete',
+        data: {name:name},
+
+        
+        success: function(data) {
+           location.reload();
+        },
+        error: function(result) {
+            alert('error');
+        }
+    });
+    li.remove();
+}
+
+function downloadElement(e)
+{
+	var div=(e.parentNode);
+        var li=div.parentNode;
+        var name=li.childNodes[3].innerText;
+        
+        $.ajax({
+        type: 'GET',
+        url: 'Download',
+        data: {name:name},
+
+        
+        success: function(data) {
+           window.location=data;
+        },
+        error: function(result) {
+            alert('error');
+        }
+    });
+}
+
 
 function welcome(name)
 {

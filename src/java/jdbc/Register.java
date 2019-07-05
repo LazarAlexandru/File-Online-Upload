@@ -16,26 +16,33 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+//import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
+ *
  *
  * @author Alex
  */
 @WebServlet(name = "Register", urlPatterns = {"/Register"})
+
 public class Register extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
+     * @param args
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+   
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -97,6 +104,7 @@ public class Register extends HttpServlet {
             pa.setString(4, gender);
             pa.setString(5, email);
            pa.executeUpdate();
+          
             
             PrintWriter out=response.getWriter();
              out.write("<html>");

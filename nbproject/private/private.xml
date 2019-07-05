@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/FileUploader/src/java/jdbc/Register.java</file>
-            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/FileUploader/web/myFiles.jsp</file>
-            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/FileUploader/src/java/jdbc/Login.java</file>
-            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/FileUploader/src/java/components/User.java</file>
-            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/FileUploader/src/java/components/File.java</file>
-            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/FileUploader/web/login.jsp</file>
+            <file>file:/C:/Users/Alex/Desktop/File-Online-Upload/src/java/uploadownload/Upload.java</file>
+            <file>file:/C:/Users/Alex/Desktop/File-Online-Upload/src/java/jdbc/Login.java</file>
+            <file>file:/C:/Users/Alex/Desktop/File-Online-Upload/src/java/uploadownload/Download.java</file>
+            <file>file:/C:/Users/Alex/Desktop/File-Online-Upload/src/java/jdbc/Delete.java</file>
         </group>
     </open-files>
 </project-private>
